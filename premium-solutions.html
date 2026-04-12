@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Web Development — Mini Web Solutions</title>
+<meta name="description" content="Premium web development solutions with e-commerce, custom web apps, advanced SEO, and dedicated support for ambitious brands." />
+<meta name="author" content="Mini Web Solutions" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.miniwebsolutions.com/premium-solutions.html" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<meta property="og:title" content="Premium Web Development — Mini Web Solutions" />
+<meta property="og:description" content="Premium web development with e-commerce, advanced SEO, custom web apps, and dedicated support for growth-focused brands." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.miniwebsolutions.com/premium-solutions.html" />
+<meta property="og:image" content="https://www.miniwebsolutions.com/og-image.png" />
+<meta property="og:site_name" content="Mini Web Solutions" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Premium Web Development — Mini Web Solutions" />
+<meta name="twitter:description" content="Custom premium web development with e-commerce, SEO optimization, web applications, and ongoing support." />
+<meta name="twitter:image" content="https://www.miniwebsolutions.com/twitter-image.png" />
+<meta name="twitter:creator" content="@MiniWebSolutions" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.miniwebsolutions.com/#organization",
+      "name": "Mini Web Solutions",
+      "url": "https://www.miniwebsolutions.com/",
+      "logo": "https://www.miniwebsolutions.com/favicon.ico",
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+918367215722",
+          "email": "miniwebsolutions1@gmail.com",
+          "contactType": "Customer Service",
+          "areaServed": "IN"
+        }
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.miniwebsolutions.com/#localbusiness",
+      "name": "Mini Web Solutions",
+      "image": "https://www.miniwebsolutions.com/og-image.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hyderabad",
+        "addressRegion": "Telangana",
+        "addressCountry": "IN"
+      },
+      "telephone": "+918367215722",
+      "email": "miniwebsolutions1@gmail.com",
+      "url": "https://www.miniwebsolutions.com/",
+      "priceRange": "$$"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.miniwebsolutions.com/premium-solutions.html#service",
+      "name": "Premium Web Development",
+      "serviceType": "Premium Web Development",
+      "description": "Premium web development with e-commerce, custom web apps, advanced SEO, and dedicated support for ambitious brands.",
+      "provider": {
+        "@type": "Organization",
+        "@id": "https://www.miniwebsolutions.com/#organization"
+      },
+      "areaServed": "IN",
+      "url": "https://www.miniwebsolutions.com/premium-solutions.html"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060910;--surface:#0d1117;--glass:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);--accent:#f5c518;--accent2:#fb923c;
+  --glow:rgba(245,197,24,0.3);--text:#e2e8f0;--muted:#64748b;
+  --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;cursor:none;}
+
+#cursor{position:fixed;width:12px;height:12px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.15s ease,background 0.3s;transform:translate(-50%,-50%);}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:99998;transition:transform 0.4s ease;transform:translate(-50%,-50%);opacity:0.5;}
+body:has(a:hover) #cursor,body:has(button:hover) #cursor{transform:translate(-50%,-50%) scale(2.5);background:#fb923c;}
+
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),#f43f5e);z-index:9999;width:0%;transition:width 0.1s;}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:0.4;}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 60px;position:fixed;top:0;left:0;right:0;z-index:1000;transition:background 0.4s,backdrop-filter 0.4s,box-shadow 0.4s;}
+nav.scrolled{background:rgba(6,9,16,0.85);backdrop-filter:blur(18px);box-shadow:0 1px 0 var(--border);}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-0.03em;color:var(--text);text-decoration:none;}
+.logo-icon{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#f5c518,#fb923c);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 20px rgba(245,197,24,0.4);}
+nav ul{display:flex;list-style:none;gap:8px;}
+nav ul li a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;padding:8px 16px;border-radius:999px;transition:color 0.3s,background 0.3s;}
+nav ul li a:hover{color:var(--text);background:var(--glass);}
+.nav-cta{padding:10px 22px;border-radius:999px;border:1.5px solid var(--border);background:var(--glass);color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:border-color 0.3s,box-shadow 0.3s;}
+.nav-cta:hover{border-color:var(--accent);box-shadow:0 0 16px rgba(245,197,24,0.25);}
+
+/* HERO */
+.page-hero{min-height:78vh;display:flex;align-items:center;justify-content:center;padding:140px 60px 80px;position:relative;overflow:hidden;text-align:center;}
+.hero-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 25% 45%,rgba(245,197,24,0.07) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 60% at 75% 40%,rgba(251,146,60,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 55% 75%,rgba(244,63,94,0.05) 0%,transparent 60%);
+}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+
+/* Stars / particles */
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--accent);animation:star-twinkle var(--dur,3s) ease infinite var(--delay,0s);}
+@keyframes star-twinkle{0%,100%{opacity:0.15;transform:scale(1);}50%{opacity:1;transform:scale(1.8);}}
+
+.page-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid rgba(245,197,24,0.35);border-radius:999px;font-size:13px;color:var(--accent);margin-bottom:24px;background:rgba(245,197,24,0.07);animation:badge-in 0.8s ease both;}
+@keyframes badge-in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+.price-tag{display:inline-block;font-family:var(--font-display);font-size:56px;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:12px 0 0;animation:hero-in 1s ease 0.2s both;}
+.price-tag sub{font-size:18px;font-weight:400;color:var(--muted);-webkit-text-fill-color:var(--muted);vertical-align:middle;}
+.page-hero h1{font-family:var(--font-display);font-size:clamp(42px,6vw,80px);font-weight:800;line-height:1.05;letter-spacing:-0.04em;animation:hero-in 1s ease 0.15s both;}
+.page-hero h1 .gradient{background:linear-gradient(135deg,#f5c518 0%,#fb923c 60%,#f43f5e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.page-hero p{margin-top:20px;font-size:18px;color:var(--muted);max-width:560px;margin-inline:auto;line-height:1.7;animation:hero-in 1s ease 0.3s both;}
+.page-hero-btns{display:flex;gap:14px;justify-content:center;margin-top:40px;animation:hero-in 1s ease 0.45s both;}
+@keyframes hero-in{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#060910;font-family:var(--font-body);font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 0 30px rgba(245,197,24,0.35);}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 0 55px rgba(245,197,24,0.5);}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;border:1.5px solid var(--border);background:var(--glass);backdrop-filter:blur(10px);color:var(--text);font-family:var(--font-body);font-size:15px;font-weight:500;text-decoration:none;cursor:pointer;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s;}
+.btn-outline:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 0 20px rgba(245,197,24,0.15);}
+
+section{padding:90px 60px;position:relative;}
+.section-label{font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.section-title{font-family:var(--font-display);font-size:clamp(30px,3.5vw,48px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:20px;}
+.section-sub{color:var(--muted);font-size:17px;line-height:1.7;}
+
+/* FEATURES */
+.features-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;max-width:1100px;margin-inline:auto;}
+.feat-card{
+  padding:32px;border-radius:22px;
+  border:1px solid var(--border);
+  background:var(--glass);backdrop-filter:blur(10px);
+  position:relative;overflow:hidden;
+  transition:transform 0.35s,border-color 0.35s,box-shadow 0.35s;
+}
+.feat-card.gold-glow:hover{border-color:var(--accent);box-shadow:0 20px 50px rgba(245,197,24,0.1);}
+.feat-card:hover{transform:translateY(-6px);}
+.feat-icon{font-size:32px;margin-bottom:18px;display:block;}
+.feat-title{font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;}
+.feat-desc{color:var(--muted);font-size:14px;line-height:1.7;}
+.feat-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(245,197,24,0.12);color:var(--accent);margin-top:14px;}
+
+/* ALL INCLUSIVE */
+.all-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:52px;max-width:1000px;margin-inline:auto;}
+.all-item{
+  display:flex;align-items:flex-start;gap:16px;
+  padding:22px 26px;border-radius:18px;
+  border:1px solid var(--border);background:var(--glass);
+  transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
+}
+.all-item:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3);}
+.ai-icon{font-size:26px;flex-shrink:0;}
+.ai-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:5px;}
+.ai-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* TECH STACK */
+.tech-section{background:var(--surface);border-top:1px solid var(--border);}
+.tech-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;max-width:800px;}
+.tech-tag{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 20px;border-radius:14px;
+  border:1px solid var(--border);background:var(--glass);
+  font-size:14px;font-weight:500;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.tech-tag:hover{border-color:var(--accent);transform:translateY(-2px);}
+.tech-tag span{font-size:18px;}
+
+/* PRICING TIERS */
+.pricing-section{text-align:center;}
+.pricing-cards{display:flex;gap:20px;margin-top:52px;justify-content:center;flex-wrap:wrap;}
+.pricing-card{
+  flex:1;min-width:260px;max-width:320px;
+  padding:36px 32px;border-radius:24px;
+  border:1px solid var(--border);background:var(--glass);
+  backdrop-filter:blur(12px);
+  transition:transform 0.35s,border-color 0.35s,box-shadow 0.35s;
+  position:relative;text-align:left;
+}
+.pricing-card:hover{transform:translateY(-6px);}
+.pricing-card.featured{
+  border-color:rgba(245,197,24,0.4);
+  background:rgba(245,197,24,0.04);
+  box-shadow:0 0 50px rgba(245,197,24,0.1);
+}
+.pc-label{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.pc-price{font-family:var(--font-display);font-size:48px;font-weight:800;line-height:1;}
+.pc-price.gold{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.pc-cycle{font-size:14px;color:var(--muted);margin-top:6px;margin-bottom:24px;}
+.pc-features{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;}
+.pc-features li{display:flex;align-items:center;gap:10px;font-size:14px;}
+.pc-features li::before{content:'';width:18px;height:18px;border-radius:50%;background:rgba(245,197,24,0.12);display:inline-flex;align-items:center;justify-content:center;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5c518' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-size:11px;background-repeat:no-repeat;background-position:center;flex-shrink:0;}
+.pc-btn{width:100%;padding:14px;border-radius:12px;border:1.5px solid var(--border);background:transparent;color:var(--text);font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:block;text-align:center;transition:border-color 0.3s,background 0.3s;}
+.pc-btn:hover{border-color:var(--accent);background:rgba(245,197,24,0.06);}
+.pc-btn.featured-btn{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#060910;border:none;}
+.pc-btn.featured-btn:hover{opacity:0.9;}
+.pc-popular{position:absolute;top:-14px;left:50%;transform:translateX(-50%);padding:6px 16px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#060910;font-size:12px;font-weight:700;white-space:nowrap;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:40px;max-width:600px;margin-inline:auto;}
+.tl-item{display:flex;gap:24px;position:relative;padding-bottom:32px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.tl-num{width:44px;height:44px;border-radius:50%;background:rgba(245,197,24,0.1);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--accent);}
+.tl-line{flex:1;width:1.5px;background:var(--border);margin:8px 0;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-right{padding-top:10px;}
+.tl-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:6px;}
+.tl-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+.tl-day{display:inline-block;font-size:12px;font-weight:600;color:var(--accent);background:rgba(245,197,24,0.08);padding:3px 10px;border-radius:999px;margin-top:6px;}
+
+/* FAQ */
+.faq-section{background:var(--surface);border-top:1px solid var(--border);}
+.faq-list{max-width:720px;margin:40px auto 0;display:flex;flex-direction:column;gap:14px;}
+.faq-item{border-radius:16px;border:1px solid var(--border);background:var(--glass);overflow:hidden;}
+.faq-q{width:100%;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;background:none;border:none;color:var(--text);font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer;text-align:left;transition:color 0.3s;}
+.faq-q:hover{color:var(--accent);}
+.faq-arrow{font-size:18px;transition:transform 0.3s;flex-shrink:0;}
+.faq-item.open .faq-arrow{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;}
+.faq-item.open .faq-a{max-height:200px;}
+.faq-a-inner{padding:0 24px 20px;font-size:15px;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.cta-section{
+  text-align:center;
+  background:
+    radial-gradient(ellipse 60% 60% at 50% 50%,rgba(245,197,24,0.06) 0%,transparent 70%);
+  border-top:1px solid var(--border);
+}
+.cta-section .section-title{max-width:560px;margin-inline:auto;}
+.cta-section .section-sub{max-width:460px;margin-inline:auto;margin-bottom:36px;}
+.cta-btns{display:flex;gap:14px;justify-content:center;}
+
+footer{padding:40px 60px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface);}
+.footer-copy{font-size:14px;color:var(--muted);}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--accent);}
+
+.float-btns{position:fixed;bottom:28px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:900;}
+.float-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;text-decoration:none;border:none;cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.3);}
+.float-btn:hover{transform:translateY(-4px) scale(1.1);}
+.float-wa{background:#22c55e;}.float-call{background:var(--accent);color:#060910;}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.from-left{transform:translateX(-50px);}
+.reveal.from-right{transform:translateX(50px);}
+.reveal.visible{opacity:1;transform:none;}
+.stagger .reveal:nth-child(1){transition-delay:0s;}
+.stagger .reveal:nth-child(2){transition-delay:0.08s;}
+.stagger .reveal:nth-child(3){transition-delay:0.16s;}
+.stagger .reveal:nth-child(4){transition-delay:0.08s;}
+.stagger .reveal:nth-child(5){transition-delay:0.16s;}
+.stagger .reveal:nth-child(6){transition-delay:0.24s;}
+
+@media(max-width:900px){
+  nav{padding:16px 24px;}nav ul{display:none;}
+  section,.page-hero{padding:80px 24px;}
+  .features-grid,.all-grid,.pricing-cards{grid-template-columns:1fr;flex-direction:column;}
+  footer{flex-direction:column;gap:16px;text-align:center;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="progress"></div>
+
+<nav id="navbar">
+  <a class="logo" href="index.html">
+    <div class="logo-icon">🌐</div>
+    Mini Web
+  </a>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#booking">Book</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#booking">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <!-- Animated stars -->
+  <div class="stars" id="stars"></div>
+  <div style="position:relative;z-index:2;">
+    <div class="page-badge">⭐ Premium Tier — Best Value</div>
+    <div class="price-tag">₹29,999 <sub>/ one-time</sub></div>
+    <h1><span class="gradient">Premium Solutions</span></h1>
+    <p>E-commerce, custom web apps, advanced animations, dedicated account management — everything your brand needs to dominate online.</p>
+    <div class="page-hero-btns">
+      <a class="btn-primary" href="index.html#booking">🚀 Book Free Strategy Call</a>
+      <a class="btn-outline" href="https://wa.me/918367215722">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div style="max-width:1100px;margin-inline:auto;text-align:center;">
+    <div class="reveal">
+      <p class="section-label">Premium Features</p>
+      <h2 class="section-title">Everything — Without Compromise</h2>
+      <p class="section-sub" style="margin-inline:auto;">Built for businesses that want the best. Every feature, every detail, every detail refined.</p>
+    </div>
+    <div class="features-grid stagger">
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">🛒</span><div class="feat-title">E-Commerce Store</div><div class="feat-desc">Full online store with product listings, cart, payments (Razorpay/UPI), and order management.</div><div class="feat-badge">Included</div></div>
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">⚙️</span><div class="feat-title">Custom Web App</div><div class="feat-desc">Booking systems, dashboards, CRMs, member portals — built exactly for your workflow.</div><div class="feat-badge">On Request</div></div>
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">✨</span><div class="feat-title">Premium Animations</div><div class="feat-desc">GSAP & scroll-triggered animations that make your site feel like a luxury product.</div><div class="feat-badge">Included</div></div>
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">🔍</span><div class="feat-title">Advanced SEO</div><div class="feat-desc">Schema markup, sitemap, Google Search Console setup, and keyword optimization report.</div><div class="feat-badge">Included</div></div>
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">🔒</span><div class="feat-title">Security & Performance</div><div class="feat-desc">HTTPS, DDoS protection, CDN setup, speed optimization — 90+ Google PageSpeed score.</div><div class="feat-badge">Included</div></div>
+      <div class="feat-card gold-glow reveal"><span class="feat-icon">📊</span><div class="feat-title">Full Analytics Suite</div><div class="feat-desc">Google Analytics 4, heatmaps, conversion tracking, and monthly performance reports.</div><div class="feat-badge">Included</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL INCLUSIVE -->
+<section>
+  <div style="max-width:1000px;margin-inline:auto;">
+    <div style="text-align:center;" class="reveal">
+      <p class="section-label">What's Included</p>
+      <h2 class="section-title">The Complete Package</h2>
+      <p class="section-sub" style="margin-inline:auto;">Every item below is included in the ₹29,999 package — no add-on costs, no surprises.</p>
+    </div>
+    <div class="all-grid stagger">
+      <div class="all-item reveal"><div class="ai-icon">📄</div><div><div class="ai-title">Unlimited Pages</div><div class="ai-desc">No page limit — build as large a site as your business needs.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">🖼️</div><div><div class="ai-title">Custom Logo Design</div><div class="ai-desc">Professional logo creation included if you don't have one yet.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">📱</div><div><div class="ai-title">Progressive Web App</div><div class="ai-desc">Users can install your site on their phone like a native app.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">💳</div><div><div class="ai-title">Payment Integration</div><div class="ai-desc">Razorpay, PayU, or UPI QR code setup for online payments.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">📧</div><div><div class="ai-title">Business Email Setup</div><div class="ai-desc">yourname@yourbusiness.com email with Google Workspace.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">🤝</div><div><div class="ai-title">Dedicated Account Manager</div><div class="ai-desc">A single point of contact for all communications and updates.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">🛠️</div><div><div class="ai-title">90 Days Priority Support</div><div class="ai-desc">Priority queue support for changes, fixes, and additions after launch.</div></div></div>
+      <div class="all-item reveal"><div class="ai-icon">📈</div><div><div class="ai-title">Monthly Report</div><div class="ai-desc">Monthly PDF report on traffic, rankings, and site performance.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="tech-section">
+  <div style="max-width:900px;margin-inline:auto;">
+    <div class="reveal">
+      <p class="section-label">Technology</p>
+      <h2 class="section-title">Built with the Right Tools</h2>
+      <p class="section-sub">We choose the best technology for your specific project — not a one-size-fits-all approach.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-tag reveal"><span>⚛️</span> React / Next.js</div>
+      <div class="tech-tag reveal"><span>🎨</span> Tailwind CSS</div>
+      <div class="tech-tag reveal"><span>✨</span> GSAP Animations</div>
+      <div class="tech-tag reveal"><span>🛒</span> WooCommerce</div>
+      <div class="tech-tag reveal"><span>🔥</span> Firebase</div>
+      <div class="tech-tag reveal"><span>🗄️</span> MySQL / MongoDB</div>
+      <div class="tech-tag reveal"><span>☁️</span> AWS / Cloudflare</div>
+      <div class="tech-tag reveal"><span>💳</span> Razorpay</div>
+      <div class="tech-tag reveal"><span>📊</span> GA4 / GTM</div>
+      <div class="tech-tag reveal"><span>🔒</span> SSL / WAF</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="reveal" style="max-width:800px;margin-inline:auto;text-align:center;">
+    <p class="section-label">Pricing Options</p>
+    <h2 class="section-title">Flexible to Fit Your Budget</h2>
+    <p class="section-sub" style="margin-inline:auto;">All plans include everything in the Premium package. Choose what works best for you.</p>
+  </div>
+  <div class="pricing-cards">
+    <div class="pricing-card reveal">
+      <div class="pc-label">Standard</div>
+      <div class="pc-price">₹29,999</div>
+      <div class="pc-cycle">Full upfront payment</div>
+      <ul class="pc-features">
+        <li>All Premium Features</li>
+        <li>Unlimited Pages</li>
+        <li>E-Commerce Store</li>
+        <li>90 Days Support</li>
+        <li>Monthly Report (3 months)</li>
+      </ul>
+      <a class="pc-btn" href="index.html#booking">Get Started</a>
+    </div>
+    <div class="pricing-card featured reveal">
+      <div class="pc-popular">⭐ Best Value</div>
+      <div class="pc-label">Premium + Maintenance</div>
+      <div class="pc-price gold">₹29,999</div>
+      <div class="pc-cycle">+ ₹2,999/month after 3 months</div>
+      <ul class="pc-features">
+        <li>Everything in Standard</li>
+        <li>Unlimited Updates</li>
+        <li>Priority Support Always</li>
+        <li>Monthly SEO Report</li>
+        <li>Dedicated Account Manager</li>
+        <li>New features added monthly</li>
+      </ul>
+      <a class="pc-btn featured-btn" href="index.html#booking">Book Free Strategy Call</a>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="pc-label">Custom / Enterprise</div>
+      <div class="pc-price">Custom</div>
+      <div class="pc-cycle">Tailored to your scope</div>
+      <ul class="pc-features">
+        <li>Full Custom Web Application</li>
+        <li>Team Collaboration Tools</li>
+        <li>Dedicated Server Setup</li>
+        <li>SLA Agreement</li>
+        <li>Ongoing dev retainer</li>
+      </ul>
+      <a class="pc-btn" href="https://wa.me/918367215722">Discuss on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section style="background:var(--surface);border-top:1px solid var(--border);">
+  <div style="text-align:center;max-width:700px;margin-inline:auto;">
+    <div class="reveal">
+      <p class="section-label">Project Timeline</p>
+      <h2 class="section-title">Live in 3–4 Weeks</h2>
+      <p class="section-sub" style="margin-inline:auto;">A comprehensive project deserves a thorough process — no shortcuts.</p>
+    </div>
+    <div class="timeline" style="margin-top:48px;text-align:left;">
+      <div class="tl-item reveal"><div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-title">Strategy & Requirements</div><div class="tl-desc">Deep discovery session to map all features, pages, integrations, and goals.</div><span class="tl-day">Week 1</span></div></div>
+      <div class="tl-item reveal"><div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-title">Design System & Prototyping</div><div class="tl-desc">Full UI design in Figma — reviewed and approved before development begins.</div><span class="tl-day">Week 1–2</span></div></div>
+      <div class="tl-item reveal"><div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-title">Development & Integration</div><div class="tl-desc">Full build: all features, animations, e-commerce, payments, and SEO.</div><span class="tl-day">Week 2–3</span></div></div>
+      <div class="tl-item reveal"><div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-title">QA Testing & Revisions</div><div class="tl-desc">Cross-device testing and three rounds of revisions to perfect every detail.</div><span class="tl-day">Week 3–4</span></div></div>
+      <div class="tl-item reveal"><div class="tl-left"><div class="tl-num">5</div></div><div class="tl-right"><div class="tl-title">Launch & Onboarding 🚀</div><div class="tl-desc">Full deployment, training session on managing your site, and 90-day support begins.</div><span class="tl-day">Week 4</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div style="max-width:720px;margin-inline:auto;text-align:center;" class="reveal">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Common Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Do I need to provide content and images? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">No! We help with content writing and source premium stock images for you. If you have existing content, we'll use that — it's always better. We do ask for basic details about your business to get started.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I update the website myself after launch? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! We build with a simple CMS (content management system) so you can edit text, images, and products yourself without any coding knowledge. We also provide a training session on how to use it.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">What payment methods do you support for the e-commerce store? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">We integrate Razorpay which supports UPI, credit/debit cards, net banking, and wallets. We can also set up PayU, Cashfree, or simple UPI QR code payments depending on your preference.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">Is hosting and domain included in the price? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Hosting and domain are not included in the package price (they are typically ₹2,000–5,000/year depending on your chosen provider), but we handle the complete setup for you and recommend the best options for your needs.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">What if I need changes after the 90-day support period? <span class="faq-arrow">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">After 90 days you can subscribe to our ₹2,999/month maintenance plan for unlimited updates and priority support, or we offer one-off changes at very reasonable hourly rates. We never leave you stranded.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <p class="section-label">Let's Build Something Great</p>
+    <h2 class="section-title">Ready for a Premium Digital Presence?</h2>
+    <p class="section-sub">Book a free 30-minute strategy call. We'll map out your entire project and give you a clear roadmap.</p>
+    <div class="cta-btns">
+      <a class="btn-primary" href="index.html#booking">🚀 Book Free Strategy Call</a>
+      <a class="btn-outline" href="https://wa.me/918367215722">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2026 Mini Web Solutions · Hyderabad, India</div>
+  <div class="footer-links">
+    <a href="tel:+918367215722">📞 +91 83672 15722</a>
+    <a href="tel:+918008857243">📱 +91 80088 57243</a>
+    <a href="https://wa.me/918367215722">💬 WhatsApp</a>
+  </div>
+</footer>
+
+<div class="float-btns">
+  <a class="float-btn float-wa" href="https://wa.me/918367215722">💬</a>
+  <a class="float-btn float-call" href="tel:+918367215722">📞</a>
+<script>
+/* CURSOR */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+/* SCROLL */
+window.addEventListener('scroll',()=>{
+  const el=document.documentElement;
+  document.getElementById('progress').style.width=(el.scrollTop/(el.scrollHeight-el.clientHeight))*100+'%';
+  document.getElementById('navbar').classList.toggle('scrolled',scrollY>50);
+});
+
+/* REVEAL */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+
+/* STARS */
+const starsEl=document.getElementById('stars');
+for(let i=0;i<60;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--dur:${2+Math.random()*4}s;--delay:${Math.random()*4}s;width:${Math.random()>0.7?3:2}px;height:${Math.random()>0.7?3:2}px;`;
+  starsEl.appendChild(s);
+}
+
+/* FAQ */
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+</script>
+</body>
+</html>
