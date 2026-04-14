@@ -1174,9 +1174,18 @@ footer{
 
 <script>
 /* ── LOADER ── */
-window.addEventListener('load',()=>{
-  setTimeout(()=>{ document.getElementById('loader').classList.add('hide'); },1800);
+function hideLoader() {
+  const loader = document.getElementById('loader');
+  if (loader && !loader.classList.contains('hide')) {
+    loader.classList.add('hide');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(hideLoader, 1000);
 });
+
+setTimeout(hideLoader, 3000);
 
 /* ── CURSOR ── */
 const cur = document.getElementById('cursor');
