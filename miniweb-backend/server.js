@@ -9,7 +9,6 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/miniweb';
-const FRONTEND_DIR = __dirname;
 const ALLOWED_ORIGINS = process.env.CORS_ORIGIN
   ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim())
   : ['http://localhost:4000', 'http://127.0.0.1:4000'];
@@ -38,26 +37,7 @@ const apiLimiter = rateLimit({
 });
 
 app.use('/api/contact', apiLimiter);
-
-const STATIC_WHITELIST = new Set(['.html', '.css', '.png', '.jpg', '.jpeg', '.svg', '.ico', '.webp']);
-app.use((req, res, next) => {
-  if (req.path.startsWith('/api') || req.method !== 'GET') {
-    return next();
-  }
-
-  if (req.path.includes('..')) {
-    return res.status(400).end();
-  }
-
-  const ext = path.extname(req.path).toLowerCase();
-  if (req.path === '/' || STATIC_WHITELIST.has(ext)) {
-    return next();
-  }
-
-  return res.status(404).end();
-});
-
-app.use(express.static(FRONTEND_DIR));
+app.use(express.static(__dirname));
 
 const contactSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true, maxlength: 80 },
