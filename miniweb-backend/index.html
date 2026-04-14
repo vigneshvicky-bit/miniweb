@@ -159,6 +159,11 @@ body:has(button:hover) #cursor{
 }
 
 /* ── LOADER ── */
+.loader {
+  position: fixed;
+  z-index: 9999;
+  transition: all 0.5s ease;
+}
 #loader{
   position:fixed;inset:0;
   background:var(--bg);
@@ -1190,9 +1195,12 @@ footer{
   const disableCursor = isTouch || prefersReducedMotion || saveData;
 
   function hideLoader() {
-    const loader = document.getElementById('loader');
-    if (loader && !loader.classList.contains('hide')) {
-      loader.classList.add('hide');
+    const loader = document.querySelector('.loader');
+    if (loader) {
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      loader.style.pointerEvents = 'none';
+      setTimeout(() => loader.remove(), 500);
     }
   }
 
@@ -1205,8 +1213,9 @@ footer{
   }
 
   safeRun(() => {
+    setTimeout(hideLoader, 2000);
+    window.addEventListener('DOMContentLoaded', hideLoader);
     window.addEventListener('load', hideLoader);
-    setTimeout(hideLoader, 3000);
 
     const cur = document.getElementById('cursor');
     const ring = document.getElementById('cursor-ring');
