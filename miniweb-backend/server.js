@@ -45,21 +45,24 @@ const contactSchema = new mongoose.Schema({
   date: { type: String, trim: true, maxlength: 30 },
   service: { type: String, trim: true, maxlength: 100 },
   message: { type: String, trim: true, maxlength: 1000 },
-  createdAt: { type: Date, default: Date.now }
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Contact = mongoose.model('Contact', contactSchema);
 const phoneRegex = /^[\d+()\-\s]{7,30}$/;
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
-  console.log('MongoDB connected');
-}).catch((err) => {
-  console.error('MongoDB connection error:', err.message);
-  process.exit(1);
-});
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err.message);
+    process.exit(1);
+  });
 
 app.post('/api/contact', async (req, res) => {
   const name = String(req.body.name || '').trim();
