@@ -4,7 +4,7 @@ This repository contains a static frontend website and a Node.js + Express + Mon
 
 ## Project structure
 
-- `index.HTML` - main landing page
+- `index.html` - main landing page
 - `basic-website.html`, `business-website.html`, `premium-solutions.html` - service pages
 - `miniweb-backend/` - backend server project
   - `server.js` - Express API and static file server
@@ -16,7 +16,7 @@ This repository contains a static frontend website and a Node.js + Express + Mon
 
 ### 1. Update your domain and social metadata
 
-In `index.HTML` and the other pages if you want them consistent, update the following values to your real live domain:
+In `index.html` and the other pages if you want them consistent, update the following values to your real live domain:
 
 - `link rel="canonical"` URL
 - `meta property="og:url"` URL
@@ -32,7 +32,7 @@ Example replacements:
 
 ### 2. Set your actual contact details
 
-In `index.HTML`, update any placeholder phone numbers or WhatsApp links if they are not your final business contact:
+In `index.html`, update any placeholder phone numbers or WhatsApp links if they are not your final business contact:
 
 - `+91 83672 15722`
 - `+91 80088 57243`
@@ -58,7 +58,7 @@ The frontend currently sends form submissions to:
 - `/api/contact`
 
 If the backend and frontend are served from the same domain, no change is needed.
-If the backend is hosted on a different domain, update the path in `index.HTML` to the full backend URL, for example:
+If the backend is hosted on a different domain, update the path in `index.html` to the full backend URL, for example:
 
 ```js
 const response = await fetch('https://api.yourdomain.com/api/contact', {

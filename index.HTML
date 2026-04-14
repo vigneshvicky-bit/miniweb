@@ -873,8 +873,10 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  nav{padding:16px 24px;}
-  nav ul{display:none;}
+  nav{padding:16px 24px;flex-direction:column;align-items:center;gap:14px;}
+  nav ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  nav ul li a{padding:8px 14px;}
+  .nav-cta{width:100%;max-width:320px;}
   section{padding:80px 24px;}
   .hero{padding:120px 24px 80px;}
   .about{grid-template-columns:1fr;}
@@ -883,8 +885,18 @@ footer{
   .process-grid::before{display:none;}
   .booking-wrap{grid-template-columns:1fr;}
   footer{flex-direction:column;gap:16px;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:12px;}
   .float-card{display:none;}
   .hero-floats{display:none;}
+}
+@media(max-width:600px){
+  section{padding:60px 16px;}
+  .hero{padding:100px 16px 60px;}
+  .hero h1{font-size:clamp(36px,10vw,70px);}
+  .hero-sub{max-width:100%;}
+  .nav-cta{font-size:14px;padding:14px 22px;}
+  footer{padding:32px 16px;}
+  .float-btns{bottom:18px;right:16px;}
 }
 </style>
 </head>

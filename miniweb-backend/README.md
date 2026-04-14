@@ -1,6 +1,6 @@
 # Mini Web Solutions Backend
 
-This backend provides a simple Express API and MongoDB storage for the contact form in `index.HTML`.
+This backend provides a simple Express API and MongoDB storage for the contact form in `index.html`.
 
 ## Setup
 
@@ -12,10 +12,11 @@ This backend provides a simple Express API and MongoDB storage for the contact f
 
    cp .env.example .env
 
-3. Edit `.env` and set your MongoDB connection string:
+3. Edit `.env` and set your MongoDB connection string and allowed frontend origin:
 
    MONGO_URI=mongodb://127.0.0.1:27017/miniweb
    PORT=4000
+   CORS_ORIGIN=http://localhost:4000
 
 4. Start the server:
 
