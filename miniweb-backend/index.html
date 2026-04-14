@@ -112,7 +112,11 @@ body{
   color:var(--text);
   font-family:var(--font-body);
   overflow-x:hidden;
-  cursor:none;
+  cursor:default;
+}
+
+.no-cursor {
+  cursor: none;
 }
 
 /* ── CUSTOM CURSOR ── */
@@ -160,8 +164,9 @@ body:has(button:hover) #cursor{
   background:var(--bg);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  z-index:10000;
-  transition:opacity 0.8s ease,visibility 0.8s;
+  z-index:9999;
+  transition:opacity 0.35s ease,visibility 0.35s;
+  pointer-events:none;
 }
 #loader.hide{opacity:0;visibility:hidden;}
 
@@ -173,7 +178,7 @@ body:has(button:hover) #cursor{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:pulse-text 1.2s ease infinite alternate;
+  animation:pulse-text 0.85s ease infinite alternate;
 }
 .loader-bar{
   margin-top:28px;
@@ -911,7 +916,12 @@ footer{
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="loader-text">Mini Web Solutions</div>
+  <div class="loader-text">
+    Mini Web Solutions<br>
+    <small style="font-size:14px;color:#64748b;">
+      Loading... please wait (server waking up)
+    </small>
+  </div>
   <div class="loader-bar"><div class="loader-bar-fill"></div></div>
 </div>
 
@@ -1173,95 +1183,168 @@ footer{
 </div>
 
 <script>
-/* ── LOADER ── */
-function hideLoader() {
-  const loader = document.getElementById('loader');
-  if (loader && !loader.classList.contains('hide')) {
-    loader.classList.add('hide');
+(function(){
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const saveData = navigator.connection?.saveData;
+  const disableCursor = isTouch || prefersReducedMotion || saveData;
+
+  function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader && !loader.classList.contains('hide')) {
+      loader.classList.add('hide');
+    }
   }
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(hideLoader, 1000);
-});
+  function safeRun(fn) {
+    try {
+      fn();
+    } catch (err) {
+      console.error('Frontend script error:', err);
+    }
+  }
 
-setTimeout(hideLoader, 3000);
+  safeRun(() => {
+    window.addEventListener('load', hideLoader);
+    setTimeout(hideLoader, 3000);
 
-/* ── CURSOR ── */
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function animRing(){
-  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+
+    if (disableCursor) {
+      if (cur) cur.style.display = 'none';
+      if (ring) ring.style.display = 'none';
+    } else if (cur && ring) {
+      document.body.classList.add('no-cursor');
+      cur.style.display = 'block';
+      ring.style.display = 'block';
+      let mx = 0, my = 0, rx = 0, ry = 0;
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        cur.style.left = mx + 'px';
+        cur.style.top = my + 'px';
+      });
+
+      let animActive = true;
+      function animRing() {
+        if (!animActive) return;
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
+        requestAnimationFrame(animRing);
+      }
+      requestAnimationFrame(animRing);
+      setTimeout(() => { animActive = false; }, 8000);
+    }
+
+    safeRun(() => {
+      window.addEventListener('scroll', () => {
+        const progress = document.getElementById('progress');
+        if (progress) {
+          const el = document.documentElement;
+          const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+          progress.style.width = pct + '%';
+        }
+
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }
+      });
+    });
+
+    const phrases = ['Stunning Websites','Digital Experiences','Business Growth','Your Online Brand'];
+    let pi = 0, ci = 0, del = false;
+    const typed = document.getElementById('typed-text');
+
+    function type() {
+      if (!typed) return;
+      const phrase = phrases[pi];
+      if (!del) {
+        typed.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) {
+          del = true;
+          setTimeout(type, 1200);
+          return;
+        }
+      } else {
+        typed.textContent = phrase.slice(0, --ci);
+        if (ci === 0) {
+          del = false;
+          pi = (pi + 1) % phrases.length;
+        }
+      }
+      setTimeout(type, del ? 80 : 120);
+    }
+
+    if (typed && !prefersReducedMotion) {
+      setTimeout(type, 1200);
+    }
+
+    safeRun(() => {
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18 });
+        reveals.forEach((r) => io.observe(r));
+      } else {
+        reveals.forEach((r) => r.classList.add('visible'));
+      }
+    });
+
+    safeRun(() => {
+      function animCount(el, target) {
+        let n = 0;
+        const step = target / 60;
+        const t = setInterval(() => {
+          n = Math.min(n + step, target);
+          el.textContent = Math.round(n) + (el.dataset.suffix || '');
+          if (n >= target) clearInterval(t);
+        }, 20);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const cio = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              document.querySelectorAll('[data-count]').forEach((el) => {
+                animCount(el, +el.dataset.count);
+              });
+              cio.disconnect();
+            }
+          });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stats-row').forEach((r) => cio.observe(r));
+      } else {
+        document.querySelectorAll('[data-count]').forEach((el) => animCount(el, +el.dataset.count));
+      }
+    });
+  });
 })();
 
-/* ── SCROLL PROGRESS ── */
-window.addEventListener('scroll',()=>{
-  const el=document.documentElement;
-  const pct=(el.scrollTop/(el.scrollHeight-el.clientHeight))*100;
-  document.getElementById('progress').style.width=pct+'%';
-});
-
-/* ── NAV SCROLL ── */
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',scrollY>50);
-});
-
-/* ── TYPED TEXT ── */
-const phrases=['Stunning Websites','Digital Experiences','Business Growth','Your Online Brand'];
-let pi=0,ci=0,del=false;
-const typed=document.getElementById('typed-text');
-function type(){
-  const phrase=phrases[pi];
-  if(!del){ typed.textContent=phrase.slice(0,++ci); if(ci===phrase.length){del=true;setTimeout(type,1800);return;}}
-  else{ typed.textContent=phrase.slice(0,--ci); if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-  setTimeout(type,del?60:100);
-}
-setTimeout(type,2200);
-
-/* ── REVEAL ON SCROLL ── */
-const reveals=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-},{threshold:0.12});
-reveals.forEach(r=>io.observe(r));
-
-/* ── COUNTER ANIMATION ── */
-function animCount(el,target){
-  let n=0,step=target/60;
-  const t=setInterval(()=>{ n=Math.min(n+step,target); el.textContent=Math.round(n)+(el.dataset.suffix||''); if(n>=target)clearInterval(t); },20);
-}
-const cio=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('[data-count]').forEach(el=>{ animCount(el,+el.dataset.count); });
-      cio.disconnect();
-    }
-  });
-},{threshold:0.3});
-document.querySelectorAll('.stats-row').forEach(r=>cio.observe(r));
-
-/* ── FORM SUBMIT ── */
-async function handleSubmit(e){
+async function handleSubmit(e) {
   e.preventDefault();
 
-  const name=document.getElementById('name').value.trim();
-  const phone=document.getElementById('phone').value.trim();
-  const date=document.getElementById('date').value;
-  const service=document.getElementById('service').value;
-  const msg=document.getElementById('msg').value.trim();
-
-  if(!name||!phone){
-    alert('Please fill required fields');
-    return;
-  }
-
   try {
+    const name = document.getElementById('name')?.value.trim();
+    const phone = document.getElementById('phone')?.value.trim();
+    const date = document.getElementById('date')?.value;
+    const service = document.getElementById('service')?.value;
+    const msg = document.getElementById('msg')?.value.trim();
+
+    if (!name || !phone) {
+      alert('Please fill required fields');
+      return;
+    }
+
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1273,7 +1356,7 @@ async function handleSubmit(e){
       throw new Error(data.error || 'Submission failed');
     }
 
-    document.getElementById('leadForm').reset();
+    document.getElementById('leadForm')?.reset();
     alert('Enquiry sent successfully!');
   } catch (error) {
     console.error('Contact submit error:', error);
